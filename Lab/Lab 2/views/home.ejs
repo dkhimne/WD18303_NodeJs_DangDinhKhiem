@@ -1,0 +1,25 @@
+
+    <%- include ('header.ejs') %>
+
+    <main>
+        <div class="py-5">
+            <div class="container text-center">
+                <div class="row">
+                    <% for(let i = 0;i<8;i++){ %>
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                        <div class="card mb-4">
+                            <img src="https://cdn.tgdd.vn/Products/Images/7077/314705/apple-watch-s9-41mm-vien-nhom-day-silicone-hong-thumb-2-600x600.jpg" alt="">
+                            <div class="card-body">
+                                <div class="cart-title ">Apple Watch - $200</div>
+                                <button class="btn btn-info px-5">Buy now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </main>
+    <%- include('footer.ejs') %>
+    
+   
