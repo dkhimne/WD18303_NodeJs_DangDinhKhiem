@@ -13,7 +13,7 @@ const db = mysql.createConnection({
 
 const bodyParser = require('body-parser');
 const app = express()
-const port = 3018
+const port = 3019
 // var jsonParser = bodyParser.json();
 app.use(bodyParser.urlencoded({extends:true}));
 app.use(express.static("public"));
