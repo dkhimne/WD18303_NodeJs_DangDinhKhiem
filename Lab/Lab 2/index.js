@@ -1,15 +1,19 @@
-// const http = require('http');
 
-// const server = http.createServer((req, res)=>{
-//     console.log("HIHI");
-// });
-// server.listen(3300);
 
 const express = require('express');
 const multer = require('multer');
+const mysql = require('mysql')
+
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '123456',
+    database:'nodejs_dangdinhkhiem',
+})
+
 const bodyParser = require('body-parser');
 const app = express()
-const port = 3017
+const port = 3018
 // var jsonParser = bodyParser.json();
 app.use(bodyParser.urlencoded({extends:true}));
 app.use(express.static("public"));
@@ -31,6 +35,13 @@ app.get("/shop", (req, res) => {
 app.get("/addpr", (req, res) => {
   res.render('themsp.ejs');
 })
+//chi tiet sp
+app.get("/productdetail", (req, res) => {
+  const productId = req.query.id; // Retrieve product ID from query parameters
+  const product = productList.find(prod => prod.id === productId); // Find the product with the given ID
+  res.render('productdetail', { products : productList });
+});
+//
 //add pr
 // SET STORAGE
 const storage = multer.diskStorage({
