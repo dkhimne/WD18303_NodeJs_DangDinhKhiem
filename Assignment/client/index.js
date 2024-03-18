@@ -6,6 +6,7 @@ const port = 3001
 app.use(bodyParser.urlencoded({extends:true}));
 
 app.use(express.static("public"));
+app.use(express.static("public2"));
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
