@@ -1,16 +1,30 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express()
-const port = 3001
+const port = 3002
 // var jsonParser = bodyParser.json();
 app.use(bodyParser.urlencoded({extends:true}));
 
 app.use(express.static("public"));
-app.use(express.static("public2"));
 
 app.set('view engine', 'ejs');
-app.set('views', './views');
+app.set('views', ['./views/client', './views/admin']);
 
+
+
+//admin
+app.get("/home", (req, res) => {
+  res.render('home.ejs');
+})
+app.get("/listSp", (req, res) => {
+  res.render('listsp.ejs');
+})
+app.get("/listCate", (req, res) => {
+  res.render('listcate.ejs');
+})
+app.get("/ListKh", (req, res) => {
+  res.render('listkh.ejs');
+})
 //trang home
 app.get("/", (req, res) => {
   res.render('index.ejs');
