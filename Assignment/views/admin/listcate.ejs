@@ -423,28 +423,36 @@
         </ul>
       </nav>
       <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-            <div class="col-lg-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Danh Sách Danh Mục</h4>
-                  <div class="table-responsive">
-                    <div id="danh-muc">
-                      <button type="button" class="btn btn-primary mt-3" id="addcategories">Thêm </button>
-                      <table class="table table-striped">
-                        <thead>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Danh Sách Danh Mục</h4>
+                <div class="table-responsive">
+                  <div id="san-pham">
+                   <a href="/addcate"><button type="button" class="btn btn-info" id="addpr">Thêm </button></a>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Name</th>                                               
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="productTableBody">
+                        <% for (let cate of categories) { %>
                           <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Action</th>
-                        </thead>
-                        <tbody id="categoriesTableBody">
-                          <!-- danh sách sản phẩm -->
-                        </tbody>
-                      </table>
-                    </div>
+                            <td><%= cate.id %></td>
+                            <td><%= cate.name %></td>                            
+                            <td>
+                              <button type="button" class="btn btn-warning btn-sm">Sửa</button>
+                              <button type="button" class="btn btn-danger btn-sm">Xóa</button>
+                            </td>                  
+                          </tr>
+                        <% } %>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>

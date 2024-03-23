@@ -423,41 +423,49 @@
         </ul>
       </nav>
       <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-            <div class="row">
-                <div class="col-lg-12 grid-margin stretch-card">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Danh Sách người dùng</h4>
-                            <div class="table-responsive">
-                                <div id="don-hang">
-                                    <table class="table table-striped">
-                                        <thead>
-                                          <button type="button" class="btn btn-primary mt-3" >Thêm </button>
-                                            <tr>                                              
-                                                <th>ID</th>
-                                                <th>Customer_name</th>
-                                                <th>Customer_address</th>
-                                                <th>Customer_email</th>
-                                                <th>Customer_phone</th>
-                                                <th>Created_date</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!-- danh sách sản phẩm -->
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Danh Sách Khách Hàng</h4>
+                <div class="table-responsive">
+                  <div id="san-pham">
+                   <a href=""><button type="button" class="btn btn-info" id="addpr">Thêm </button></a>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Phone</th>
+                          <th>Address</th>        
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="productTableBody">
+                        <% for (let user of users) { %>
+                          <tr>
+                            <td><%= user.id %></td>
+                            <td><%= user.name %></td>
+                            <td><%= user.email %></td>
+                            <td><%= user.phone %></td>
+                            <td><%= user.address %></td>
+                            <td>
+                              <button type="button" class="btn btn-warning btn-sm">Sửa</button>
+                              <button type="button" class="btn btn-danger btn-sm">Xóa</button>
+                            </td>                  
+                          </tr>
+                        <% } %>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
     
       <!-- container-scroller -->
       <!-- plugins:js -->
