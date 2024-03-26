@@ -20,7 +20,7 @@ exports.postAddProduct = (req, res, next) => {
         image: image
     }
     Product.saveProduct(product);
-    res.redirect('/shop');
+    res.redirect('/client/shop');
 
 }
 
