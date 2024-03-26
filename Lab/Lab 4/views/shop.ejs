@@ -1,0 +1,34 @@
+<%- include ('header.ejs') %>
+<main>
+    <div class="py-5">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+                <% for (let product of products) { %>
+                <div class="col">
+                    <div class="card h-100" onclick="viewProductDetails('<%= product.id %>')">
+                        <img src="/data/uploads/<%= product.image %>" class="card-img-top" style="height: 300px; object-fit: cover;" alt="<%= product.name %>">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= product.name %></h5>
+                            <p class="card-text">$<%= product.sale_price %></p>
+                            <p class="card-text"><small class="text-muted"><del>$<%= product.price %></del></small></p>
+                            <p class="card-text"><%= product.describe %></p>
+                            <button class="btn btn-info px-4">Buy now</button>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    function viewProductDetails(productId) {
+        // Redirect to the product detail page passing the product id
+        window.location.href = '/product-detail?id=' + productId;
+    }
+</script>
+
+
+
+<%- include('footer.ejs') %>
