@@ -1,5 +1,4 @@
 const ProductController = require ("../controllers/admin/ProductController")
-const PostController = require ("../controllers/api/PostController")
 const multer = require('multer');
 const express  = require("express");
 
@@ -15,11 +14,10 @@ const storage = multer.diskStorage({
 const uploads = multer({ storage: storage })
 
 
-router.get('/listproducts',ProductController.getProducts); // /listproducts tự đặt
+// router.get('/listproducts',ProductController.getProducts); // /listproducts tự đặt
 
-router.get('/themproduct',ProductController.AddProduct);
-router.post('/themproduct',uploads.single('image'),ProductController.postAddProduct);
+// router.get('/themproduct',ProductController.AddProduct);
+// router.post('/themproduct',uploads.single('image'),ProductController.postAddProduct);
 
-router.get('/posts', PostController.getPosts);
 
 module.exports = router;

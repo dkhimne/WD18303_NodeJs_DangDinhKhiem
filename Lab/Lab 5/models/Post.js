@@ -20,4 +20,34 @@ module.exports = class Post {
             }
         });
     }
+
+    static getOne(id,callback) {
+        let sql = `SELECT * FROM posts WHERE id = ${id}`;
+        db.query(sql, function(err, data) {
+            if (err) {
+                throw err;
+            }
+            callback(data);
+        });
+    }
+
+    static update(id, data, callback) {
+        db.query(`UPDATE posts SET ? WHERE id = ${id}`, data, function(err, post) {
+            if (err) {
+                throw err;
+            }
+            callback(post);
+        }); 
+    }
+
+    //create code static delete product
+    static delete(id,callback) {
+        let sql = `DELETE FROM posts WHERE id = ${id}`;
+        db.query(sql, function(err, data) {
+            if (err) {
+                throw err;
+            }
+            callback(data);
+        });
+    }
 }
