@@ -408,9 +408,9 @@
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/listSp">Danh sách sản phẩm </a></li>
-                <li class="nav-item"> <a class="nav-link" href="/listCate">Danh sách danh mục </a></li>
-                <li class="nav-item"> <a class="nav-link" href="/listKh">Danh sách khách hàng</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/listproducts">Danh sách sản phẩm </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/listcategories">Danh sách danh mục </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/listKh">Danh sách khách hàng</a></li>
               </ul>
             </div>
             <li class="nav-item">
@@ -431,7 +431,7 @@
                 <h4 class="card-title">Danh Sách Sản Phẩm</h4>
                 <div class="table-responsive">
                   <div id="san-pham">
-                   <a href="/addpr"><button type="button" class="btn btn-info" id="addpr">Thêm </button></a>
+                   <a href="/admin/themproduct"><button type="button" class="btn btn-info" id="addpr">Thêm </button></a>
                     <table class="table table-striped">
                       <thead>
                         <tr>
@@ -452,7 +452,7 @@
                             <td><%= product.name %></td>
                             <td><%= product.price %></td>
                             <td><%= product.sale_price %></td>
-                            <td><img src="<%= product.image %>" style="width: 100px; height: 100px;" alt="Product Image"></td>
+                            <td><img src="/data/uploads/<%= product.image %>" style="width: 100px; height: 100px;" alt="Product Image"></td>
                             <td><%= product.describe %></td>
                             <td><%= product.category_id %></td>
                             <td>

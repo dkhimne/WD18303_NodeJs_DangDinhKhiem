@@ -408,9 +408,9 @@
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/listSp">Danh sách sản phẩm </a></li>
-                <li class="nav-item"> <a class="nav-link" href="/listCate">Danh sách danh mục </a></li>
-                <li class="nav-item"> <a class="nav-link" href="/listKh">Danh sách khách hàng</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/listproducts">Danh sách sản phẩm </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/listcategories">Danh sách danh mục </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/listKh">Danh sách khách hàng</a></li>
               </ul>
             </div>
             <li class="nav-item">
@@ -431,7 +431,7 @@
                 <h4 class="card-title">Danh Sách Danh Mục</h4>
                 <div class="table-responsive">
                   <div id="san-pham">
-                   <a href="/addcate"><button type="button" class="btn btn-info" id="addpr">Thêm </button></a>
+                   <a href="/admin/themcate"><button type="button" class="btn btn-info" id="addpr">Thêm </button></a>
                     <table class="table table-striped">
                       <thead>
                         <tr>
@@ -447,11 +447,11 @@
                             <td><%= cate.name %></td>                            
                             <td>
                               <button type="button" class="btn btn-warning btn-sm">Sửa</button>
-                              <button type="button" class="btn btn-danger btn-sm">Xóa</button>
+                              <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(<%= cate.id %>)">Xóa</button>
                             </td>                  
                           </tr>
                         <% } %>
-                      </tbody>
+                      </tbody>                      
                     </table>
                   </div>
                 </div>
@@ -477,7 +477,25 @@
       <script src="../../js/todolist.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
       <script type="module" src="../../crud/category.js"></script>
+      <script>
+      function confirmDelete(id) {
+      if (confirm("Bạn có chắc chắn muốn xóa danh mục này không?")) {
+        $.ajax({
+          url: '/admin/delete/' + id,
+          type: 'DELETE',
+          success: function(result) {
+            location.reload();
+          },
+          error: function(err) {
+            console.error('Lỗi khi xóa danh mục:', err);
+            alert('Đã xảy ra lỗi khi xóa danh mục. Vui lòng thử lại sau.');
+          }
+        });
+      }
+    }
 
+
+      </script>
       <!-- endinject -->
       <!-- Custom js for this page-->
       <!-- End custom js for this page-->
