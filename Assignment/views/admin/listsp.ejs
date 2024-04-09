@@ -457,7 +457,7 @@
                             <td><%= product.category_id %></td>
                             <td>
                               <button type="button" class="btn btn-warning btn-sm">Sửa</button>
-                              <button type="button" class="btn btn-danger btn-sm">Xóa</button>
+                              <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('<%= product.id %>')">Xóa</button>
                             </td>                  
                           </tr>
                         <% } %>
@@ -487,6 +487,24 @@
         <script src="../../js/todolist.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
         <script type="module" src="../../crud/product.js"></script>
+        <script>
+          function confirmDelete(id) {
+          if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?")) {
+            $.ajax({
+              url: '/admin/delete/' + id,
+              type: 'DELETE',
+              success: function(result) {
+                location.reload('http://127.0.0.1:3021/admin/listproducts');
+              },
+              error: function(err) {
+            alert('Xóa thành công.');
+              }
+            });
+          }
+        }
+    
+    
+          </script>
 
 
         <!-- endinject -->

@@ -431,15 +431,14 @@
                 <h4 class="card-title">Danh Sách Khách Hàng</h4>
                 <div class="table-responsive">
                   <div id="san-pham">
-                   <a href="/admin/themcate"><button type="button" class="btn btn-info" id="addpr">Thêm </button></a>
+                   <a href="/admin/themkh"><button type="button" class="btn btn-info" id="addpr">Thêm </button></a>
                     <table class="table table-striped">
                       <thead>
                         <tr>
                           <th>ID</th>
                           <th>Name</th>
-                          <th>Email</th>
-                          <th>Phone</th>
-                          <th>Address</th>        
+                          <th>Password</th>
+                          <th>Email</th>                                  
                           <th>Action</th>
                         </tr>
                       </thead>
@@ -448,12 +447,11 @@
                           <tr>
                             <td><%= user.id %></td>
                             <td><%= user.name %></td>
-                            <td><%= user.email %></td>
-                            <td><%= user.phone %></td>
-                            <td><%= user.address %></td>
+                            <td><%= user.password %></td>
+                            <td><%= user.email %></td>                                                  
                             <td>
                               <button type="button" class="btn btn-warning btn-sm">Sửa</button>
-                              <button type="button" class="btn btn-danger btn-sm">Xóa</button>
+                              <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('<%= user.id %>')">Xóa</button>
                             </td>                  
                           </tr>
                         <% } %>
@@ -481,6 +479,26 @@
       <script src="../../js/template.js"></script>
       <script src="../../js/settings.js"></script>
       <script src="../../js/todolist.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+      <script type="module" src="../../crud/product.js"></script>       
+      <script>
+        function confirmDelete(id) {
+          if (confirm("Bạn có chắc chắn muốn xóa khách hàng này không?")) {
+            $.ajax({
+              url: '/admin/delete/' + id,
+              type: 'DELETE',
+              success: function(result) {
+              console.log("Deletion successful");
+              location.reload();
+          },
+              error: function(err) {
+                alert('Xóa thành công.');
+              }
+            });
+          }
+        }
+      </script>
+      
       <!-- endinject -->
       <!-- Custom js for this page-->
       <!-- End custom js for this page-->

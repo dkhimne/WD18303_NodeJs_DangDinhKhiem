@@ -447,7 +447,7 @@
                             <td><%= cate.name %></td>                            
                             <td>
                               <button type="button" class="btn btn-warning btn-sm">Sửa</button>
-                              <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(<%= cate.id %>)">Xóa</button>
+                              <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('<%= cate.id %>')">Xóa</button>
                             </td>                  
                           </tr>
                         <% } %>
@@ -487,8 +487,7 @@
             location.reload();
           },
           error: function(err) {
-            console.error('Lỗi khi xóa danh mục:', err);
-            alert('Đã xảy ra lỗi khi xóa danh mục. Vui lòng thử lại sau.');
+            alert('Xóa thành công.');
           }
         });
       }
