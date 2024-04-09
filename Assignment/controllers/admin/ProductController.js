@@ -31,5 +31,14 @@ exports.getProducts = (req, res, next) => {
     })
 }
 
-
+exports.delProduct = (req, res, next) => {
+    let productId = req.params.id;
+    Product.delProduct(productId, (err, data) => {
+        if (err) {
+            res.status(500).send("Đã xóa thành công..");
+        } else {
+            res.redirect('/admin/listproducts');
+        }
+    });
+}
 

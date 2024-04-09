@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express()
 const port = 3021
-// var jsonParser = bodyParser.json();
 app.use(bodyParser.urlencoded({ extends: true }));
 app.use(express.static("public"));
 
@@ -20,16 +19,6 @@ app.get("/home", (req, res) => {
   res.render('home.ejs');
 })
 
-
-
-app.get("/listKh", (req, res) => {
-  let sqlUsers = `SELECT * FROM users`;
-
-  db.query(sqlUsers, (errUsers, usersData) => {
-    if (errUsers) throw errUsers;
-      res.render('listkh.ejs', { users : usersData  });
-    });
-});
 
 
 //-----------------client----------------

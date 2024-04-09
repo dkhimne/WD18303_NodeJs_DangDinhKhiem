@@ -43,4 +43,14 @@ module.exports = class Product {
             });
         });
     }
+
+    static delProduct(id, callback) {
+        db.query(`DELETE FROM products WHERE id = ${id}`, function (err, data) {
+            if (err) {
+                callback(err, null);
+            } else {
+                callback(null, data);
+            }
+        });
+    }  
 }

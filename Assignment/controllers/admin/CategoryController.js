@@ -27,7 +27,7 @@ exports.delCategory = (req, res, next) => {
     let cateId = req.params.id;
     Category.delCategory(cateId, (err, data) => {
         if (err) {
-            res.status(500).send("Đã xảy ra lỗi khi xóa danh mục.");
+            res.status(500).send("Đã xóa thành công.");
         } else {
             res.redirect('/admin/listcategories');
         }
