@@ -19,6 +19,16 @@ module.exports = class Category {
     }
 
 
+    static getAll(callback) {
+        let sqlCate = `SELECT * FROM categories`;
+
+        db.query(sqlCate, (err, catelogData) => {
+            if (err) throw err;
+
+            callback(catelogData);
+        });
+    }
+
     static addCategory(callback) {
         let sqlCate = `SELECT * FROM categories`;
 
@@ -52,5 +62,15 @@ module.exports = class Category {
             }
         });
     }    
+    
+    static getCategoryById(id, callback) {
+        db.query(`SELECT * FROM categories WHERE id = ${id}`, function (err, data) {
+            if (err ) {
+                callback(err, null);
+            } else {
+                callback(null,data);
+            }
+        });
+    }
     
 }

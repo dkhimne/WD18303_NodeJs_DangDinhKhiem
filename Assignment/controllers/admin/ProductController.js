@@ -52,7 +52,7 @@ exports.editProduct = (req, res, next) => {
         } else {
             Category.getAllCate((err, categoriesData) => {
                 if (err) {
-                    res.status(500).send("Đã có lỗi xảy ra khi tìm danh mục.");
+                    res.status(500).send("Thầy chưa fix.");
                 } else {
                     res.render('editsp.ejs', { product: productData, categories: categoriesData });
                 }

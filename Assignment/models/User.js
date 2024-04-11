@@ -47,4 +47,13 @@ module.exports = class User {
         });
     }    
     
+    static getUserById(id, callback) {
+        db.query(`SELECT * FROM users WHERE id = ${id}`, function (err, data) {
+            if (err ) {
+                callback(err, null);
+            } else {
+                callback(null,data);
+            }
+        });
+    }
 }

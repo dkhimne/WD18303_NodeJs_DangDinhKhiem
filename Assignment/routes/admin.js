@@ -42,6 +42,10 @@ router.get('/deleteCate/:id', CategoryController.delCategory);
 
 router.delete('/deleteCate/:id', CategoryController.delCategory);
 
+router.get('/editCate/:id', CategoryController.editCategory);
+
+router.post('/editCate/:id',CategoryController.postEditCategory);
+
 //user
 router.get('/listkh',UserController.getUsers);
 
@@ -52,5 +56,9 @@ router.post('/themkh',UserController.postAddUser);
 router.get('/deleteUser/:id', UserController.delUser);
 
 router.delete('/deleteUser/:id', UserController.delUser);
+
+router.get('/editUser/:id', UserController.editUser);
+
+router.post('/editUser/:id', UserController.postEditUser);
 
 module.exports = router;
