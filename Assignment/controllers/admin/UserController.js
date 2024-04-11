@@ -7,9 +7,8 @@ exports.AddUser = (req, res, next) => {
 }
 
 exports.postAddUser = (req, res, next) => {
-    const name = req.body;
-    const email = req.body;
-    const password = req.body;
+    const {name,email,password} = req.body;
+
     user = {
         name: name,
         email: email,

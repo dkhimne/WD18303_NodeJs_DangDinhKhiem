@@ -4,11 +4,17 @@ module.exports = class Category {
     constructor() {
     }
     static getAllCate(callback) {
+        let sqlProducts = `SELECT * FROM products`;
         let sqlCatelog = `SELECT * FROM categories`;
 
-        db.query(sqlCatelog, (errCatelog, catelogData) => {
-            if (errCatelog) throw errCatelog;
-            callback(catelogData);
+        db.query(sqlProducts, (errProducts, productsData) => {
+            if (errProducts) throw errProducts;
+
+            db.query(sqlCatelog, (errCatelog, catelogData) => {
+                if (errCatelog) throw errCatelog;
+
+                callback(productsData, catelogData);
+            });
         });
     }
 

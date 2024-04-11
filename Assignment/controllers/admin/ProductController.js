@@ -1,4 +1,5 @@
 const Product = require("../../models/Product")
+const Category = require('../../models/Category');
 
 exports.AddProduct = (req, res, next) => {
     Product.addProduct(function (data) {
@@ -35,10 +36,49 @@ exports.delProduct = (req, res, next) => {
     let productId = req.params.id;
     Product.delProduct(productId, (err, data) => {
         if (err) {
-            res.status(500).send("Đã xóa thành công..");
+            res.status(500).send("Đã có lỗi xảy ra khi xóa sản phẩm.");
         } else {
             res.redirect('/admin/listproducts');
         }
     });
 }
+
+exports.editProduct = (req, res, next) => {
+    let productId = req.params.id;
+    console.log(productId);
+    Product.getProductById(productId, (err, productData) => {
+        if (err) {
+            res.status(500).send("Đã có lỗi xảy ra khi tìm sản phẩm.");
+        } else {
+            Category.getAllCate((err, categoriesData) => {
+                if (err) {
+                    res.status(500).send("Đã có lỗi xảy ra khi tìm danh mục.");
+                } else {
+                    res.render('editsp.ejs', { product: productData, categories: categoriesData });
+                }
+            });
+        }
+    });
+}
+
+
+exports.postEditProduct = (req, res, next) => {
+    let productId = req.params.id;
+    let updatedProductData = {
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+        sale_price: req.body.sale_price, 
+        category_id: req.body.category_id,
+    };
+
+    Product.updateProduct(productId, updatedProductData, (err, updatedProduct) => {
+        if (err) {
+            res.status(500).send("Đã có lỗi xảy ra khi cập nhật sản phẩm.");
+        } else {
+            res.redirect('/admin/listproducts'); 
+        }
+    });
+}
+
 

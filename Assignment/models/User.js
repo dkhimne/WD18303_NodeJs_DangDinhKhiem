@@ -4,22 +4,22 @@ module.exports = class User {
     constructor() {
     }
     static getAllUser(callback) {
-        let sqlCatelog = `SELECT * FROM users`;
+        let sqlUser = `SELECT * FROM users`;
 
-        db.query(sqlCatelog, (errCatelog, catelogData) => {
-            if (errCatelog) throw errCatelog;
-            callback(catelogData);
+        db.query(sqlUser, (errUser, UserData) => {
+            if (errUser) throw errUser;
+            callback(UserData);
         });
     }
 
 
     static addUser(callback) {
-        let sqlCate = `SELECT * FROM users`;
+        let sqlUser = `SELECT * FROM users`;
 
-        db.query(sqlCate, (err, catelogData) => {
+        db.query(sqlUser, (err, UserData) => {
             if (err) throw err;
 
-            callback(catelogData);
+            callback(UserData);
         });
     }
 

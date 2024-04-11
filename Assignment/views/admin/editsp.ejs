@@ -17,6 +17,7 @@
   <!-- Plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../../images/favicon.png" />
@@ -423,71 +424,64 @@
         </ul>
       </nav>
       <!-- partial -->
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title">Danh Sách Sản Phẩm</h4>
-                <div class="table-responsive">
-                  <div id="san-pham">
-                   <a href="/admin/themproduct"><button type="button" class="btn btn-info" id="addpr">Thêm </button></a>
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>Name</th>
-                          <th>Price</th>
-                          <th>Sale Price</th>
-                          <th>Image</th>
-                          <th>Describe</th>        
-                          <th>Cate_ID </th>                      
-                          <th>Action</th>
-                        </tr>
-                      </thead>
-                      <tbody id="productTableBody">
-                        <% for (let product of products) { %>
-                          <tr>
-                            <td><%= product.id %></td>
-                            <td><%= product.name %></td>
-                            <td><%= product.price %></td>
-                            <td><%= product.sale_price %></td>
-                            <td><img src="/data/uploads/<%= product.image %>" style="width: 100px; height: 100px;" alt="Product Image"></td>
-                            <td><%= product.describe %></td>
-                            <td><%= product.category_id %></td>
-                            <td>
-                              <a href="/admin/edit/<%= product.id %>" class="btn btn-warning btn-sm">Sửa</a>
-                              <a href="/admin/delete/<%= product.id %>" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')">Xóa</a>
-                          </td>                                           
-                          </tr>
-                        <% } %>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <div class="container mt-3">
+    <i><h2 class="text-center">Edit Sản Phẩm</h2></i>
+    <form action="/admin/edit/<%= product.id %>" method="POST" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
       </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="text" class="form-control" id="price" name="price" placeholder="Price">
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Sale Price</label>
+        <input type="text" class="form-control" id="sale_price" name="sale_price" placeholder="Price">
+      </div>
+      <div class="mb-3">
+        <label for="describe" class="form-label">Describe</label>
+        <input type="text" class="form-control" id="describe" name="describe" placeholder="Describe">
+      </div>
+      <div class="mb-3">
+        <label for="cateId" class="form-label">Cate_ID</label>
+        <select class="form-select" id="cateId" name="category_id">
+          <option selected disabled>Choose Cate_ID</option>
+          <% for (let cate of categories) { %>
+            <option value="<%= cate.id %>"> 
+              <%= cate.id %>
+            </option>
+            <% } %>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="img" class="form-label">Image</label>
+        <input type="file" class="form-control" id="img" name="image">
+      </div>
+      <button type="submit" class="btn btn-info">Edit Product</button>
+    </form>
+  </div>
 
-        <!-- container-scroller -->
-        <!-- plugins:js -->
-        <script src="../../vendors/js/vendor.bundle.base.js"></script>
-        <!-- endinject -->
-        <!-- Plugin js for this page -->
-        <script src="../../vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-        <!-- End plugin js for this page -->
-        <!-- inject:js -->
-        <script src="data.js"></script>
-        <script src="../../js/off-canvas.js"></script>
-        <script src="../../js/hoverable-collapse.js"></script>
-        <script src="../../js/template.js"></script>
-        <script src="../../js/settings.js"></script>
-        <script src="../../js/todolist.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-        <script type="module" src="../../crud/product.js"></script>
-        
+      <!-- container-scroller -->
+      <!-- plugins:js -->
+      <script src="../../vendors/js/vendor.bundle.base.js"></script>
+      <!-- endinject -->
+      <!-- Plugin js for this page -->
+      <script src="../../vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+      <!-- End plugin js for this page -->
+      <!-- inject:js -->
+      <script src="data.js"></script>
+      <script src="../../js/off-canvas.js"></script>
+      <script src="../../js/hoverable-collapse.js"></script>
+      <script src="../../js/template.js"></script>
+      <script src="../../js/settings.js"></script>
+      <script src="../../js/todolist.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+      <script type="module" src="../../crud/category.js"></script>
+
+      <!-- endinject -->
+      <!-- Custom js for this page-->
+      <!-- End custom js for this page-->
 </body>
 
 </html>

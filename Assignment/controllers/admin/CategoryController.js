@@ -7,7 +7,7 @@ exports.AddCategory = (req, res, next) => {
 }
 
 exports.postAddCategory = (req, res, next) => {
-    const name = req.body;
+    const {name} = req.body;
     category = {
         name: name
     }

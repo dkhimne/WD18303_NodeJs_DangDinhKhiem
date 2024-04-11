@@ -52,5 +52,15 @@ module.exports = class Product {
                 callback(null, data);
             }
         });
-    }  
+    }
+
+    static getProductById(id, callback) {
+        db.query(`SELECT * FROM products WHERE id = ${id}`, function (err, data) {
+            if (err ) {
+                callback(err, null);
+            } else {
+                callback(null,data);
+            }
+        });
+    }
 }

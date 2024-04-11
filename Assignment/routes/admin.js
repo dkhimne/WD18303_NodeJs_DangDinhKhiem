@@ -27,6 +27,10 @@ router.get('/delete/:id', ProductController.delProduct);
 
 router.delete('/delete/:id', ProductController.delProduct);
 
+router.get('/edit/:id', ProductController.editProduct);
+
+router.post('/edit/:id', uploads.single('image'), ProductController.postEditProduct);
+
 //category
 router.get('/listcategories',CategoryController.getCategories);
 
@@ -34,9 +38,9 @@ router.get('/themcate',CategoryController.AddCategory);
 
 router.post('/themcate',CategoryController.postAddCategory);
 
-router.get('/delete/:id', CategoryController.delCategory);
+router.get('/deleteCate/:id', CategoryController.delCategory);
 
-router.delete('/delete/:id', CategoryController.delCategory);
+router.delete('/deleteCate/:id', CategoryController.delCategory);
 
 //user
 router.get('/listkh',UserController.getUsers);
@@ -45,8 +49,8 @@ router.get('/themkh',UserController.AddUser);
 
 router.post('/themkh',UserController.postAddUser);
 
-router.get('/delete/:id', UserController.delUser);
+router.get('/deleteUser/:id', UserController.delUser);
 
-router.delete('/delete/:id', UserController.delUser);
+router.delete('/deleteUser/:id', UserController.delUser);
 
 module.exports = router;

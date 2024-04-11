@@ -447,8 +447,8 @@
                             <td><%= cate.name %></td>                            
                             <td>
                               <button type="button" class="btn btn-warning btn-sm">Sửa</button>
-                              <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('<%= cate.id %>')">Xóa</button>
-                            </td>                  
+                              <a href="/admin/deleteCate/<%= cate.id %>" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')">Xóa</a>
+                          </td>               
                           </tr>
                         <% } %>
                       </tbody>                      
@@ -477,27 +477,7 @@
       <script src="../../js/todolist.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
       <script type="module" src="../../crud/category.js"></script>
-      <script>
-      function confirmDelete(id) {
-      if (confirm("Bạn có chắc chắn muốn xóa danh mục này không?")) {
-        $.ajax({
-          url: '/admin/delete/' + id,
-          type: 'DELETE',
-          success: function(result) {
-            location.reload();
-          },
-          error: function(err) {
-            alert('Xóa thành công.');
-          }
-        });
-      }
-    }
-
-
-      </script>
-      <!-- endinject -->
-      <!-- Custom js for this page-->
-      <!-- End custom js for this page-->
+      
 </body>
 
 </html>
